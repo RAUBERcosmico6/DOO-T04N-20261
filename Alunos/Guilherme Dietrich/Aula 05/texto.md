@@ -1,9 +1,9 @@
- #Introdução:
+ # Introdução:
  Dentro da aula do dia 24/03, aprendemos sobre dois paradigmas diferentes dentro
  da programação, dentro deles, estão o modo imperativo e o declarativo, onde os dois
  podem ser utilizados para casos diferentes dentro do código.
 
- ##Imperativo:
+ ## Imperativo:
  O paradigma imperativo foca totalmente no passo a passo do código, alterando completamente
  a forma em que ele é organizado, uma das maiores formas em que aparecem o modo imperativo
  é dentro de loops ou condições, pois dentro delas, as instruções mandadas para o computador
@@ -11,15 +11,15 @@
  imperativo são: Java, C e Pythom. Por conta de manter um passo a passo, o projeto pode ficar
  um pouco mais longo e complexo, porém mais completo.
 
-##Declarativo:
+## Declarativo:
  O paradigma declarativo busca principalmente a objetividade dentro do código, onde o programador
  apenas descreve o que ele deseja ser feito, sem passar pelo processo do passo a passo, ele facilita
  com que o código seja mais curto e claro, se baseando mais em uma linguagem humana, muito diferente
  da imperativa que utiliza uma linguagem mais "robótica".
 
-##Exemplo dos códigos:
+## Exemplo dos códigos:
 
-###Java:
+### Java:
 
  ```
  import java.util.ArrayList;
@@ -56,7 +56,7 @@ public class SomaPares {
 
  ```
 
-###Prolog:
+### Prolog:
 
  ```
  % verifica se um número é par
@@ -85,7 +85,7 @@ resultado(Soma) :-
 
  ```
 
-##Diferença entre os códigos:
+## Diferença entre os códigos:
  A diferença entre os códigos é totalmente visivel, principalmente por conta da linguagem mais em
  forma de computador dentro do primeiro código, muito diferente do segundo, que aparenta ser bem 
  mais "escrito", outra diferença é de que o modo imperativo está mostrando a criação da lista, os
