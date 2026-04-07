@@ -1,4 +1,4 @@
-package Aulas;
+package Aulas; 
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -53,17 +53,9 @@ public class CalculadoraLoja {
             salarioRecebido.add(salarioBase + 150);
         }
 
-        public void apresentarSe() {
-            System.out.println("Nome: " + nome);
-            System.out.println("Idade: " + idade);
-            System.out.println("Loja: " + loja);
-        }
-
         public double calcularMedia() {
             double soma = 0;
-            for (double s : salarioRecebido) {
-                soma += s;
-            }
+            for (double s : salarioRecebido) soma += s;
             return soma / salarioRecebido.size();
         }
 
@@ -90,11 +82,6 @@ public class CalculadoraLoja {
             this.bairro = bairro;
             this.rua = rua;
         }
-
-        public void apresentarSe() {
-            System.out.println("Nome: " + nome);
-            System.out.println("Idade: " + idade);
-        }
     }
 
     static class Loja {
@@ -116,18 +103,12 @@ public class CalculadoraLoja {
             this.rua = rua;
         }
 
-        public void contarClientes() {
-            System.out.println("Quantidade de clientes: " + clientes.size());
-        }
-
-        public void contarVendedores() {
-            System.out.println("Quantidade de vendedores: " + vendedores.size());
-        }
-
         public void apresentarSe() {
             System.out.println("Loja: " + nomeFantasia);
             System.out.println("CNPJ: " + cnpj);
             System.out.println("Endereço: " + rua + ", " + bairro + ", " + cidade);
+            System.out.println("Quantidade de clientes: " + clientes.size());
+            System.out.println("Quantidade de vendedores: " + vendedores.size());
         }
     }
 
@@ -154,15 +135,16 @@ public class CalculadoraLoja {
 
         do {
             System.out.println("\n=== Sistema My Plant ===");
-            loja.contarClientes();
-            loja.contarVendedores();
+            loja.apresentarSe();
 
             System.out.println("[1] - Calcular Preço Total");
             System.out.println("[2] - Calcular Troco");
             System.out.println("[3] - Ver Registro de Vendas");
             System.out.println("[4] - Consultar Vendas por Dia");
             System.out.println("[5] - Consultar Vendas por Mês");
-            System.out.println("[6] - Sair");
+            System.out.println("[6] - Ver Funcionários");
+            System.out.println("[7] - Ver Clientes");
+            System.out.println("[8] - Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
 
@@ -183,14 +165,47 @@ public class CalculadoraLoja {
                     consultarVendasPorMes(scanner);
                     break;
                 case 6:
+                    mostrarVendedores(loja);
+                    break;
+                case 7:
+                    mostrarClientes(loja);
+                    break;
+                case 8:
                     System.out.println("Encerrando o sistema.");
                     break;
                 default:
                     System.out.println("Opção inválida.");
             }
-        } while (opcao != 6);
+        } while (opcao != 8);
 
         scanner.close();
+    }
+
+    public static void mostrarVendedores(Loja loja) {
+        System.out.println("\n=== Funcionários Cadastrados ===");
+        for (Vendedor v : loja.vendedores) {
+            System.out.println("Nome: " + v.nome);
+            System.out.println("Idade: " + v.idade);
+            System.out.println("Loja: " + v.loja);
+            System.out.println("Cidade: " + v.cidade);
+            System.out.println("Bairro: " + v.bairro);
+            System.out.println("Rua: " + v.rua);
+            System.out.println("Salário Base: " + v.salarioBase);
+            System.out.println("Salários Recebidos: " + v.salarioRecebido);
+            System.out.println("---------------------------");
+        }
+    }
+
+    public static void mostrarClientes(Loja loja) {
+        System.out.println("\n=== Clientes Cadastrados ===");
+        for (Cliente c : loja.clientes) {
+            System.out.println("Nome: " + c.nome);
+            System.out.println("Idade: " + c.idade);
+            System.out.println("Cidade: " + c.cidade);
+            System.out.println("Bairro: " + c.bairro);
+            System.out.println("Rua: " + c.rua);
+            System.out.println("---------------------------");
+        }
     }
 
     public static void calcularPrecoTotal(Scanner scanner, Loja loja) {
