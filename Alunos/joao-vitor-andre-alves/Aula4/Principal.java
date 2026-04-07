@@ -182,6 +182,7 @@ public class Principal {
 	}
 			
 	public static void buscarVendaPorDia() {
+	
 		scan.nextLine(); // Só pra segurar no caso que for usar essa função após usar o case 4
 		System.out.println("Informe a data para busca (dd/MM/yyyy):");
 		String dataTexto = scan.nextLine();
@@ -229,3 +230,4 @@ public class Principal {
 		System.out.println("Total vendido nesse período: " + totalVendido);
 	}
 }
+

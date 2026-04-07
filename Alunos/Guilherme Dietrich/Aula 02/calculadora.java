@@ -36,7 +36,7 @@ public class calculadora {
                          System.out.println("O valor não é suficiente!");
                     } else {
                     troco = dinheiroPago - precoTotal;
-                    System.out.println("O troco é: R$ " + troco);
+                    System.out.println("O troco é: R$  " + troco);
                     }
                     break;
 
