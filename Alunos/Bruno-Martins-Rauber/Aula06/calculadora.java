@@ -89,29 +89,38 @@ public class calculadora {
 				if (!achou) System.out.println("Nenhuma venda encontrada.");
 
 			} else if (Op == 4) {
-				Vendedor v1 = new Vendedor();
-				v1.nome = "Bruno Martins";
-				v1.loja = "My Plant Centro";
-				v1.salarioBase = 2000.0;
-				v1.apresentarse();
-				v1.calcularMedia();
-				v1.calcularBonus();
+			    vendedor v1 = new vendedor(); 
 
+			    v1.nome = "Bruno Martins"; 
+			    v1.idade = 21;
+			    v1.loja = "My Plant Centro";
+			    v1.salarioBase = 2500.0;
+
+			    System.out.println("--- RELATÓRIO DO FUNCIONÁRIO ---");
+			    v1.apresentarse();   
+			    
+			 
+			    System.out.println("Salário Base: R$ " + v1.salarioBase);
+			    
+			    
+			    v1.calcularMedia();  
+			    v1.calcularBonus();
+			    
 			} else if (Op == 5) {
-				Loja l1 = new Loja();
+				loja l1 = new loja();
 				l1.nomeFantasia = "My Plant";
 				l1.cnpj = "12.345.678/0001-00";
 				l1.cidade = "Cascavel";
 				l1.bairro = "Centro";
 				l1.rua = "Av. Brasil";
-				l1.vendedores = new Vendedor[3]; 
-				l1.clientes = new Cliente[5];
+				l1.vendedores = new vendedor[3]; 
+				l1.clientes = new cliente[5];
 				l1.apresentarse();
 				l1.contarVendedores();
 				l1.contarClientes();
 
 			} else if (Op == 6) {
-				Cliente c1 = new Cliente();
+				cliente c1 = new cliente();
 				c1.nome = "Dona Gabrielinha";
 				c1.idade = 55;
 				c1.apresentarse();
