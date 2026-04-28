@@ -1,4 +1,4 @@
-import java.time.LocalDate;
+import java.time.LocalDate; //coração do sistema (Hospede + Reserva)
 import java.time.temporal.ChronoUnit;
 
 public class Reserva {
