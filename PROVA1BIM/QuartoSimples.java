@@ -1,5 +1,5 @@
 public class QuartoSimples extends Quarto {
-    private boolean temVentilador;
+    private boolean temVentilador;//eu nao aguento mais
 
     public QuartoSimples(int numero, double valorDiaria, boolean temVentilador) {
         super(numero, valorDiaria);
