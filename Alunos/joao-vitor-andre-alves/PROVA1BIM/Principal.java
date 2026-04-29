@@ -5,16 +5,12 @@ import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import objetos.Carro;
-import objetos.Cliente;
 import objetos.Hospede;
-import objetos.Locacao;
-import objetos.Moto;
 import objetos.Quarto;
 import objetos.QuartoSimples;
 import objetos.QuartoLuxo;
 import objetos.Reserva;
-import objetos.Veiculo;
+
 
 public class Principal {
 	
@@ -109,29 +105,29 @@ public class Principal {
 		
 		
 		if (escolhaTipoQuarto == 1) {
-			System.out.println("O quarto possui ventilador? (S/N)");
-			String possuiVentiladorTxt = scan.nextLine();
+			System.out.println("O quarto tem ventilador? (S/N)");
+			String temVentiladorTxt = scan.nextLine();
 			
-			boolean possuiVentilador = false;
+			boolean temVentilador = false;
 			
-			if (possuiVentiladorTxt.equalsIgnoreCase("S")) {
-				possuiVentilador = true;
+			if (temVentiladorTxt.equalsIgnoreCase("S")) {
+				temVentilador = true;
 			}
 			
-			QuartoSimples quartoSimples = new QuartoSimples(numero, valorDaDiaria, possuiVentilador);
+			QuartoSimples quartoSimples = new QuartoSimples(numero, valorDaDiaria, temVentilador);
 			quartos.add(quartoSimples);
 				
 		} else if (escolhaTipoQuarto == 2) {
-			System.out.println("O quarto possui varanda? (S/N)");
-			String possuiVarandaTxt = scan.nextLine();
+			System.out.println("O quarto tem varanda? (S/N)");
+			String temVarandaTxt = scan.nextLine();
 			
-			boolean possuiVaranda = false;
+			boolean temVaranda = false;
 			
-			if (possuiVarandaTxt.equalsIgnoreCase("S")) {
-				possuiVaranda = true;
+			if (temVarandaTxt.equalsIgnoreCase("S")) {
+				temVaranda = true;
 			}
 			
-			QuartoLuxo quartoLuxo = new QuartoLuxo(numero, valorDaDiaria, possuiVaranda);
+			QuartoLuxo quartoLuxo = new QuartoLuxo(numero, valorDaDiaria, temVaranda);
 			quartos.add(quartoLuxo);
 		} else {
 			System.out.println("Por favor, insira um valor válido.");
@@ -177,10 +173,12 @@ public class Principal {
 		
 		if (hospedes.isEmpty()) {
 			System.out.println("Por favor, cadastre um hospede antes de cadastrar uma reserva!");
+			return;
 		}
 		
 		if (quartos.isEmpty()) {
 			System.out.println("Por favor, cadastre um hospede antes de cadastrar uma reserva!");
+			return;
 		}
 
 	    listarHospedes();
@@ -201,7 +199,7 @@ public class Principal {
 	    scan.nextLine();
 
 	    if (indiceQuarto < 0 || indiceQuarto >= quartos.size()) {
-	        System.out.println("Veículo inválido!");
+	        System.out.println("Quarto inválido!");
 	        return;
 	    }
 
@@ -298,53 +296,48 @@ public class Principal {
 	}
 	
 	public static void demonstracao() {
-		// CRIO PRIMEIRO CLIENTE DE FORMA MANUAL NO CÓDIGO
-		Cliente clienteDesmonstracao1 = new Cliente("João Vitor André Alves", "10608918911", "10608918911");
-		clientes.add(clienteDesmonstracao1);
+		Hospede hospedeDesmonstracao1 = new Hospede("João Vitor André Alves", "10608918911", "4599999999");
+		hospedes.add(hospedeDesmonstracao1);
 		
-		// CRIO SEGUNDO CLIENTE DE FORMA MANUAL NO CÓDIGO
-		Cliente clienteDemosntracao2 = new Cliente("Samuel Babisnki", "10345842291", "1041219241");
-		clientes.add(clienteDemosntracao2);
+		Hospede hospedeDemosntracao2 = new Hospede("Samuel Babisnki", "10345842291", "4599999999");
+		hospedes.add(hospedeDemosntracao2);
 		
-		// CRIO UM CARRO DE FORMA MANUAL NO CÓDIGO
-		Carro carroDemonstracao = new Carro("BAN1L441", 199.1, false);
-		veiculos.add(carroDemonstracao);
+		QuartoSimples quartoSimplesDemonstracao = new QuartoSimples(912, 199.1, false);
+		quartos.add(quartoSimplesDemonstracao);
 		
-		// CRIO UMA MOTO DE FORMA MANUAL NO CÓDIGO
-		Moto motoDemonstracao = new Moto("REK3P421", 100.4, 300);
-		veiculos.add(motoDemonstracao);
+		QuartoLuxo quartoLuxoDemonstracao = new QuartoLuxo(911, 140.1, true);
+		quartos.add(quartoLuxoDemonstracao);
 		
-		// PRIMEIRA LOCAÇÃO - DEVOLUÇÃO REALIZADA
-		LocalDate retirada = LocalDate.of(2026, 4, 28);
-		LocalDate devolucao = LocalDate.of(2026, 4, 30);
+		LocalDate checkin = LocalDate.of(2026, 4, 28);
+		LocalDate checkout = LocalDate.of(2026, 4, 30);
 
-		Locacao locacao = new Locacao(
-			clienteDesmonstracao1,
-			carroDemonstracao,
-		    retirada,
-		    devolucao,
+		Reserva reserva = new Reserva(
+			hospedeDesmonstracao1,
+			quartoSimplesDemonstracao,
+		    checkin,
+		    checkout,
 		    2,
 		    true
 		);
 
-		locacoes[qtdLocacoes] = locacao;
-		qtdLocacoes++;
+		reservas[qtdReservas] = reserva;
+		qtdReservas++;
 		
 		// SEGUNDA LOCAÇÃO - DEVOLUÇÃO PENDENTE
-		LocalDate retirada2 = LocalDate.of(2026, 5, 1);
-		LocalDate devolucao2 = null;
+		LocalDate checkin2 = LocalDate.of(2026, 5, 1);
+		LocalDate checkout2 = null;
 
-		Locacao locacao2 = new Locacao(
-		    clienteDemosntracao2,
-		    motoDemonstracao,
-		    retirada2,
-		    devolucao2,
-		    3,
-		    false
+		Reserva reserva2 = new Reserva(
+		   hospedeDemosntracao2,
+		   quartoLuxoDemonstracao,
+		   checkin2,
+		   checkout2,
+		   3,
+		   false
 		);
 
-		locacoes[qtdLocacoes] = locacao2;
-		qtdLocacoes++;
+		reservas[qtdReservas] = reserva2;
+		qtdReservas++;
 		
 		// FINALIZA A DEMONSTRAÇÃO CHAMANDO A LISTAGEM
 		listarReservas();
